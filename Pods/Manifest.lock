@@ -1,0 +1,38 @@
+PODS:
+  - MBProgressHUD (1.1.0)
+  - R.swift (5.0.3):
+    - R.swift.Library (~> 5.0.0)
+  - R.swift.Library (5.0.1)
+  - SwiftLint (0.32.0)
+  - Swinject (2.5.0)
+  - XCoordinator (1.3.0):
+    - XCoordinator/Core (= 1.3.0)
+  - XCoordinator/Core (1.3.0)
+
+DEPENDENCIES:
+  - MBProgressHUD (= 1.1.0)
+  - R.swift (= 5.0.3)
+  - SwiftLint
+  - Swinject (= 2.5.0)
+  - XCoordinator (= 1.3.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - MBProgressHUD
+    - R.swift
+    - R.swift.Library
+    - SwiftLint
+    - Swinject
+    - XCoordinator
+
+SPEC CHECKSUMS:
+  MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
+  R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
+  SwiftLint: 009a898ef2a1c851f45e1b59349bf6ff2ddc990d
+  Swinject: 82cdb851f63f91bba974e3eca1d69780f2f7677e
+  XCoordinator: 9083911c1b8a84f24447a5fa81da87c319294e5b
+
+PODFILE CHECKSUM: 277a324c002d0203691b0a7529721007a4ad5341
+
+COCOAPODS: 1.6.1
