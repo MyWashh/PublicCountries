@@ -10,7 +10,6 @@
 		3AF4BE2EC8996DDE7DC0DBA9 /* Pods_Countries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ADF3261D93E9C9BE738AAE3 /* Pods_Countries.framework */; };
 		C07E4712228031DB00671928 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E4711228031DB00671928 /* AppDelegate.swift */; };
 		C07E4714228031DB00671928 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E4713228031DB00671928 /* ViewController.swift */; };
-		C07E4717228031DB00671928 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C07E4715228031DB00671928 /* Main.storyboard */; };
 		C07E471A228031DB00671928 /* Countries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C07E4718228031DB00671928 /* Countries.xcdatamodeld */; };
 		C07E471C228031DD00671928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C07E471B228031DD00671928 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -21,7 +20,6 @@
 		C07E470E228031DB00671928 /* Countries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Countries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07E4711228031DB00671928 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C07E4713228031DB00671928 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C07E4716228031DB00671928 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C07E4719228031DB00671928 /* Countries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Countries.xcdatamodel; sourceTree = "<group>"; };
 		C07E471B228031DD00671928 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C07E4720228031DD00671928 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -54,7 +52,6 @@
 				FB7147D32C5063935194DDAD /* Pods-Countries.debug.xcconfig */,
 				65E7F471E1CDBC69AECD5FA9 /* Pods-Countries.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -81,7 +78,6 @@
 			children = (
 				C07E4711228031DB00671928 /* AppDelegate.swift */,
 				C07E4713228031DB00671928 /* ViewController.swift */,
-				C07E4715228031DB00671928 /* Main.storyboard */,
 				C07E471B228031DD00671928 /* Assets.xcassets */,
 				C07E4720228031DD00671928 /* Info.plist */,
 				C07E4718228031DB00671928 /* Countries.xcdatamodeld */,
@@ -101,6 +97,8 @@
 				C07E470B228031DB00671928 /* Frameworks */,
 				C07E470C228031DB00671928 /* Resources */,
 				43DBF4B19FF105D15DAADC2B /* [CP] Embed Pods Frameworks */,
+				C07E47262280376700671928 /* Swift Lint */,
+				C07E47282280383700671928 /* R Swift */,
 			);
 			buildRules = (
 			);
@@ -150,7 +148,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C07E471C228031DD00671928 /* Assets.xcassets in Resources */,
-				C07E4717228031DB00671928 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +204,45 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		C07E47262280376700671928 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Countries",
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" == \"Debug\" ]; then\n    if which swiftlint >/dev/null; then\n        cd $SRCROOT/Countries\n        swiftlint\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n        exit 1\n    fi\nfi\n";
+		};
+		C07E47282280383700671928 /* R Swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
+			);
+			name = "R Swift";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				$SRCROOT/Countries/Resources/Generated/R.generated.swift,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Countries/Resources/Generated/R.generated.swift\"\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -221,17 +257,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		C07E4715228031DB00671928 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C07E4716228031DB00671928 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		C07E4721228031DD00671928 /* Debug */ = {
