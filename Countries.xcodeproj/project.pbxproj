@@ -7,23 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3AF4BE2EC8996DDE7DC0DBA9 /* Pods_Countries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ADF3261D93E9C9BE738AAE3 /* Pods_Countries.framework */; };
+		A58E45E69DD6CF1E6569B38A /* Pods_Countries.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72B4A40F6EF33E5751EE14E5 /* Pods_Countries.framework */; };
 		C07E4712228031DB00671928 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E4711228031DB00671928 /* AppDelegate.swift */; };
-		C07E4714228031DB00671928 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E4713228031DB00671928 /* ViewController.swift */; };
+		C07E4714228031DB00671928 /* AllCountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E4713228031DB00671928 /* AllCountriesViewController.swift */; };
 		C07E471A228031DB00671928 /* Countries.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C07E4718228031DB00671928 /* Countries.xcdatamodeld */; };
 		C07E471C228031DD00671928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C07E471B228031DD00671928 /* Assets.xcassets */; };
+		C0A62EDF228046AA00829E50 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A62EDE228046AA00829E50 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0ADF3261D93E9C9BE738AAE3 /* Pods_Countries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Countries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		65E7F471E1CDBC69AECD5FA9 /* Pods-Countries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Countries.release.xcconfig"; path = "Target Support Files/Pods-Countries/Pods-Countries.release.xcconfig"; sourceTree = "<group>"; };
+		72B4A40F6EF33E5751EE14E5 /* Pods_Countries.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Countries.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CE89126BD5C90F8EED9864A /* Pods-Countries.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Countries.release.xcconfig"; path = "Target Support Files/Pods-Countries/Pods-Countries.release.xcconfig"; sourceTree = "<group>"; };
+		8FF4AE7B8784BF7CDF7F5BF4 /* Pods-Countries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Countries.debug.xcconfig"; path = "Target Support Files/Pods-Countries/Pods-Countries.debug.xcconfig"; sourceTree = "<group>"; };
 		C07E470E228031DB00671928 /* Countries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Countries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07E4711228031DB00671928 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C07E4713228031DB00671928 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C07E4713228031DB00671928 /* AllCountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCountriesViewController.swift; sourceTree = "<group>"; };
 		C07E4719228031DB00671928 /* Countries.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Countries.xcdatamodel; sourceTree = "<group>"; };
 		C07E471B228031DD00671928 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C07E4720228031DD00671928 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB7147D32C5063935194DDAD /* Pods-Countries.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Countries.debug.xcconfig"; path = "Target Support Files/Pods-Countries/Pods-Countries.debug.xcconfig"; sourceTree = "<group>"; };
+		C0A62EDE228046AA00829E50 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,26 +33,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3AF4BE2EC8996DDE7DC0DBA9 /* Pods_Countries.framework in Frameworks */,
+				A58E45E69DD6CF1E6569B38A /* Pods_Countries.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6059DBFC5F58A6499E694A3D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0ADF3261D93E9C9BE738AAE3 /* Pods_Countries.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		75106767D2F788C4FB95E4E0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FB7147D32C5063935194DDAD /* Pods-Countries.debug.xcconfig */,
-				65E7F471E1CDBC69AECD5FA9 /* Pods-Countries.release.xcconfig */,
+				8FF4AE7B8784BF7CDF7F5BF4 /* Pods-Countries.debug.xcconfig */,
+				8CE89126BD5C90F8EED9864A /* Pods-Countries.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -58,10 +52,11 @@
 		C07E4705228031DB00671928 = {
 			isa = PBXGroup;
 			children = (
+				C0A62EDE228046AA00829E50 /* main.swift */,
 				C07E4710228031DB00671928 /* Countries */,
 				C07E470F228031DB00671928 /* Products */,
 				75106767D2F788C4FB95E4E0 /* Pods */,
-				6059DBFC5F58A6499E694A3D /* Frameworks */,
+				E269F0C20D8E47B1EC03DDD9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -76,13 +71,45 @@
 		C07E4710228031DB00671928 /* Countries */ = {
 			isa = PBXGroup;
 			children = (
-				C07E4711228031DB00671928 /* AppDelegate.swift */,
-				C07E4713228031DB00671928 /* ViewController.swift */,
+				C0A62ECD22803CFC00829E50 /* AppDelegate */,
 				C07E471B228031DD00671928 /* Assets.xcassets */,
+				C0A62ED72280409A00829E50 /* Scenes */,
 				C07E4720228031DD00671928 /* Info.plist */,
 				C07E4718228031DB00671928 /* Countries.xcdatamodeld */,
 			);
 			path = Countries;
+			sourceTree = "<group>";
+		};
+		C0A62ECD22803CFC00829E50 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				C07E4711228031DB00671928 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		C0A62ED72280409A00829E50 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C0A62EE022804AAF00829E50 /* AllCountries */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		C0A62EE022804AAF00829E50 /* AllCountries */ = {
+			isa = PBXGroup;
+			children = (
+				C07E4713228031DB00671928 /* AllCountriesViewController.swift */,
+			);
+			path = AllCountries;
+			sourceTree = "<group>";
+		};
+		E269F0C20D8E47B1EC03DDD9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				72B4A40F6EF33E5751EE14E5 /* Pods_Countries.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -92,13 +119,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C07E4723228031DD00671928 /* Build configuration list for PBXNativeTarget "Countries" */;
 			buildPhases = (
-				457BFA893BBB6BFC7AC59310 /* [CP] Check Pods Manifest.lock */,
+				7120409A6654A24AA2A9A60B /* [CP] Check Pods Manifest.lock */,
 				C07E470A228031DB00671928 /* Sources */,
 				C07E470B228031DB00671928 /* Frameworks */,
 				C07E470C228031DB00671928 /* Resources */,
-				43DBF4B19FF105D15DAADC2B /* [CP] Embed Pods Frameworks */,
 				C07E47262280376700671928 /* Swift Lint */,
-				C07E47282280383700671928 /* R Swift */,
+				C1D60FC1BB4AE06B51819DDE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -154,35 +180,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		43DBF4B19FF105D15DAADC2B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Countries/Pods-Countries-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
-				"${BUILT_PRODUCTS_DIR}/XCoordinator/XCoordinator.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/XCoordinator.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Countries/Pods-Countries-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		457BFA893BBB6BFC7AC59310 /* [CP] Check Pods Manifest.lock */ = {
+		7120409A6654A24AA2A9A60B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -223,7 +221,7 @@
 			shellPath = /bin/sh;
 			shellScript = "if [ \"${CONFIGURATION}\" == \"Debug\" ]; then\n    if which swiftlint >/dev/null; then\n        cd $SRCROOT/Countries\n        swiftlint\n    else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n        exit 1\n    fi\nfi\n";
 		};
-		C07E47282280383700671928 /* R Swift */ = {
+		C1D60FC1BB4AE06B51819DDE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -231,17 +229,21 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"$TEMP_DIR/rswift-lastrun",
+				"${PODS_ROOT}/Target Support Files/Pods-Countries/Pods-Countries-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Swinject/Swinject.framework",
 			);
-			name = "R Swift";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				$SRCROOT/Countries/Resources/Generated/R.generated.swift,
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Swinject.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/Countries/Resources/Generated/R.generated.swift\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Countries/Pods-Countries-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -250,8 +252,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C07E4714228031DB00671928 /* ViewController.swift in Sources */,
+				C07E4714228031DB00671928 /* AllCountriesViewController.swift in Sources */,
 				C07E471A228031DB00671928 /* Countries.xcdatamodeld in Sources */,
+				C0A62EDF228046AA00829E50 /* main.swift in Sources */,
 				C07E4712228031DB00671928 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -377,7 +380,7 @@
 		};
 		C07E4724228031DD00671928 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB7147D32C5063935194DDAD /* Pods-Countries.debug.xcconfig */;
+			baseConfigurationReference = 8FF4AE7B8784BF7CDF7F5BF4 /* Pods-Countries.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -395,7 +398,7 @@
 		};
 		C07E4725228031DD00671928 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 65E7F471E1CDBC69AECD5FA9 /* Pods-Countries.release.xcconfig */;
+			baseConfigurationReference = 8CE89126BD5C90F8EED9864A /* Pods-Countries.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
