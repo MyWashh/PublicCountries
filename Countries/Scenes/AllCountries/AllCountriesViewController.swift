@@ -1,11 +1,16 @@
 import UIKit
+import MBProgressHUD
 
 class AllCountriesViewController: UIViewController {
     let tableView = UITableView()
-    let tableViewDataSource = AllCountriesDataSource()
+    let countriesService: CountriesProtocol
+    let tableViewDataSource: AllCountriesDataSource
     let searchController = UISearchController(searchResultsController: nil)
+    let cellIdentifier = "CountryCell"
 
-    init() {
+    init(countriesProtocol: CountriesProtocol) {
+        countriesService = countriesProtocol
+        tableViewDataSource = AllCountriesDataSource(countriesService: countriesService)
         super.init(nibName: nil, bundle: nil)
         setupSearchController()
     }
@@ -22,17 +27,13 @@ class AllCountriesViewController: UIViewController {
         bindTableView()
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-
     func setupTableView() {
         view.addSubview(tableView, constraints: [
             equal(\.leftAnchor),
             equal(\.rightAnchor),
             equal(\.topAnchor, view.safeAreaLayoutGuide.topAnchor),
             equal(\.bottomAnchor)
-        ])
+            ])
     }
 
     func setupSearchController() {
@@ -49,7 +50,7 @@ class AllCountriesViewController: UIViewController {
 extension AllCountriesViewController: UITableViewDelegate {
 
     func bindTableView() {
-        tableView.register(AllCountriesCell.self, forCellReuseIdentifier: "CustomCell")
+        tableView.register(AllCountriesCell.self, forCellReuseIdentifier: cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = tableViewDataSource
     }
@@ -58,6 +59,17 @@ extension AllCountriesViewController: UITableViewDelegate {
         return 40
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let code = tableViewDataSource.countries?[indexPath.row].alpha3Code {
+            MBProgressHUD.showAdded(to: self.view, animated: true)
+            countriesService.getCountryDetails(code: code) { country in
+                DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
+                self.present(CountryDetailViewController(name: country.name), animated: true, completion: nil)
+            }
+        }
+    }
 }
 
 // MARK: - UISearchResultsUpdating Delegate

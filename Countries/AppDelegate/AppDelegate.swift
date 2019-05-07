@@ -5,7 +5,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let mainViewController = AllCountriesViewController()
+        let networkManager = NetworkManager()
+        let mainViewController = AllCountriesViewController(countriesProtocol: networkManager)
         let navigationController = UINavigationController(rootViewController: mainViewController)
         window!.rootViewController = navigationController
         window!.makeKeyAndVisible()
