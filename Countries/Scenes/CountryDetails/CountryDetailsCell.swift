@@ -1,15 +1,8 @@
 import UIKit
 
 final class CountryDetailsCell: UITableViewCell {
-    let detailLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
-
-    let detailValueLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
+    let detailLabel = UILabel()
+    let detailValueLabel = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

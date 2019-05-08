@@ -2,10 +2,7 @@ import UIKit
 
 final class AllCountriesCell: UITableViewCell {
 
-    let countryNameLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
+    let countryNameLabel = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
