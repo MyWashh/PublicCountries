@@ -86,7 +86,8 @@ extension AllCountriesViewController: UITableViewDelegate, UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? AllCountriesCell ?? AllCountriesCell(style: .default, reuseIdentifier: cellIdentifier)
+        let defaultCell = AllCountriesCell(style: .default, reuseIdentifier: cellIdentifier)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? AllCountriesCell ?? defaultCell
         if isFiltering() {
             cell.countryNameLabel.text = filteredCountries?[indexPath.row].name
         } else {

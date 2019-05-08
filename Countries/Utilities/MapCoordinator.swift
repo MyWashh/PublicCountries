@@ -2,7 +2,7 @@ import UIKit
 import MapKit
 
 struct MapCoordinator {
-    private static func calculateRadius(area: Float) -> CLLocationDistance{
+    private static func calculateRadius(area: Float) -> CLLocationDistance {
         let radius = CLLocationDistance(area.squareRoot()) * 1000
         return radius
     }

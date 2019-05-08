@@ -9,18 +9,11 @@ final class CountryDetailsViewController: UIViewController {
     let cellDetails: [String] = ["Name:", "Capital:", "Population:", "Area:", "Region:"]
     var cellDetailsValues: [String] = []
 
-    func setupDetails() {
-        cellDetailsValues.append(country.name)
-        cellDetailsValues.append(country.capital ?? "N/A)")
-        cellDetailsValues.append(String(country.population ?? 0))
-        cellDetailsValues.append(String(country.area ?? 0) + " km2")
-        cellDetailsValues.append(country.region ?? "N/A")
-    }
     init(country: Country) {
         self.country = country
         super.init(nibName: nil, bundle: nil)
         bindTableView()
-        setupDetails()
+        setupDetailsValues()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -37,6 +30,14 @@ final class CountryDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupMap()
+    }
+
+    func setupDetailsValues() {
+        cellDetailsValues.append(country.name)
+        cellDetailsValues.append(country.capital ?? "N/A")
+        cellDetailsValues.append(String(country.population ?? 0))
+        cellDetailsValues.append(String(country.area ?? 0) + " km2")
+        cellDetailsValues.append(country.region ?? "N/A")
     }
 
     func setupNavigationBar() {
@@ -68,7 +69,7 @@ final class CountryDetailsViewController: UIViewController {
             map.showsScale = true
             map.showsCompass = true
         } else {
-            AlertController.showAlert(on: self, message: "Can't show correct map")
+            AlertController.showAlert(on: self, title: "Region error", message: "Couldn't show correct area", completion: nil)
         }
     }
 
@@ -80,7 +81,8 @@ final class CountryDetailsViewController: UIViewController {
 // MARK: Table View
 extension CountryDetailsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CountryDetailsCell ?? CountryDetailsCell(style: .default, reuseIdentifier: cellIdentifier)
+        let defaultCell = CountryDetailsCell(style: .default, reuseIdentifier: cellIdentifier)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CountryDetailsCell ?? defaultCell
         cell.detailLabel.text = cellDetails[indexPath.row]
         cell.detailValueLabel.text = cellDetailsValues[indexPath.row]
         return cell

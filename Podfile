@@ -6,7 +6,6 @@ target 'Countries' do
   pod 'Swinject', '2.5.0'
   pod 'SwiftLint'
   pod 'MBProgressHUD', '1.1.0'
-  pod 'Kingfisher', '~> 5.0'
 end
 
 

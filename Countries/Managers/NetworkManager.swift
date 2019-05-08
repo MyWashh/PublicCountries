@@ -38,7 +38,7 @@ class NetworkManager: CountriesProtocol {
     }
 
     func getCountryDetails(code: String, onCompleted: @escaping (Result<Country, Bool>) -> Void) {
-        let fields = "?fields=name;capital;population;latlng;alpha3Code;area;region"
+        let fields = "?fields=name;capital;population;latlng;alpha3Code;area;region;flag"
         let url = "https://restcountries.eu/rest/v2/alpha/" + code + fields
         requestData(withURL: url) { result in
             onCompleted(result)
