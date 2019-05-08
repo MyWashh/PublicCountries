@@ -1,7 +1,7 @@
 import UIKit
 import MBProgressHUD
 
-class AllCountriesViewController: UIViewController {
+final class AllCountriesViewController: UIViewController {
     let tableView = UITableView()
     let countriesService: CountriesProtocol
     let searchController = UISearchController(searchResultsController: nil)
@@ -23,8 +23,32 @@ class AllCountriesViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         navigationItem.title = "Countries"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshTableView))
         setupTableView()
         bindTableView()
+        getCountries()
+    }
+
+    @objc func refreshTableView() {
+        getCountries()
+    }
+
+    func getCountries() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        countriesService.getCountries {result -> Void in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let countries):
+                    self.countries = countries
+                    self.tableView.reloadData()
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                case .error:
+                    print("ooops something went wrong")
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    AlertController.showAlert(on: self, message: "Couldn't download country list")
+                }
+            }
+        }
     }
 
     func setupTableView() {
@@ -55,12 +79,6 @@ extension AllCountriesViewController: UITableViewDelegate, UITableViewDataSource
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        countriesService.getAllCountries {country -> Void in
-            self.countries = country
-            DispatchQueue.main.async {
-                tableView.reloadData()
-            }
-        }
         if isFiltering() {
             return filteredCountries?.count ?? 0
         }
@@ -93,10 +111,18 @@ extension AllCountriesViewController: UITableViewDelegate, UITableViewDataSource
 
     func presentCountryDetails(code: String) {
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        countriesService.getCountryDetails(code: code) { country in
+        countriesService.getCountryDetails(code: code) { result in
             DispatchQueue.main.async {
-                MBProgressHUD.hide(for: self.view, animated: true)
-                self.present(CountryDetailViewController(name: country.name), animated: true, completion: nil)
+                switch result {
+                case .success(let country):
+                    let countryDetailsController = CountryDetailsViewController(country: country)
+                    let navigationController = UINavigationController(rootViewController: countryDetailsController)
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.present(navigationController, animated: true, completion: nil)
+                case .error:
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    AlertController.showAlert(on: self, message: "Couldn't load details")
+                }
             }
         }
     }
