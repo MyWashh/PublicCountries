@@ -14,10 +14,25 @@ class CountryDetailsDataSource: NSObject, UITableViewDataSource {
 
     func setupDetailsValues() {
         cellDetailsValues.append(country.name)
-        cellDetailsValues.append(country.capital ?? "N/A")
-        cellDetailsValues.append(String(country.population ?? 0))
-        cellDetailsValues.append(String(country.area ?? 0) + " km2")
-        cellDetailsValues.append(country.region ?? "N/A")
+        cellDetailsValues.append(handleOptionalStringDetails(detail: country.capital))
+        cellDetailsValues.append(handleOptionalNumericDetails(detail: country.population))
+        cellDetailsValues.append(handleOptionalNumericDetails(detail: country.area) + " km2")
+        cellDetailsValues.append(handleOptionalStringDetails(detail: country.region))
+    }
+
+    func handleOptionalNumericDetails<T: LosslessStringConvertible>(detail: T?) -> String {
+        if let detail = detail {
+            return String(detail)
+        } else {
+            return "N/A"
+        }
+    }
+
+    func handleOptionalStringDetails(detail: String?) -> String {
+        guard let detail = detail else { return "N/A" }
+        if detail == "" {
+            return "N/A"
+        } else { return detail }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -29,6 +44,6 @@ class CountryDetailsDataSource: NSObject, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return cellDetails.count
     }
 }
