@@ -12,6 +12,7 @@
 		C003400D2282E34B00709990 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003400C2282E34A00709990 /* MapCoordinator.swift */; };
 		C003400F2282F43300709990 /* CountryDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003400E2282F43300709990 /* CountryDetailsCell.swift */; };
 		C003401122830F6D00709990 /* CountryDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003401022830F6D00709990 /* CountryDetailsDataSource.swift */; };
+		C0034013228426F600709990 /* AllCountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0034012228426F600709990 /* AllCountriesTableViewController.swift */; };
 		C07E4712228031DB00671928 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E4711228031DB00671928 /* AppDelegate.swift */; };
 		C07E4714228031DB00671928 /* AllCountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E4713228031DB00671928 /* AllCountriesViewController.swift */; };
 		C07E471C228031DD00671928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C07E471B228031DD00671928 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		C003400C2282E34A00709990 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
 		C003400E2282F43300709990 /* CountryDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsCell.swift; sourceTree = "<group>"; };
 		C003401022830F6D00709990 /* CountryDetailsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsDataSource.swift; sourceTree = "<group>"; };
+		C0034012228426F600709990 /* AllCountriesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCountriesTableViewController.swift; sourceTree = "<group>"; };
 		C07E470E228031DB00671928 /* Countries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Countries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07E4711228031DB00671928 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C07E4713228031DB00671928 /* AllCountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCountriesViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 			children = (
 				C07E4713228031DB00671928 /* AllCountriesViewController.swift */,
 				C0A62EE322804E6800829E50 /* AllCountriesCell.swift */,
+				C0034012228426F600709990 /* AllCountriesTableViewController.swift */,
 			);
 			path = AllCountries;
 			sourceTree = "<group>";
@@ -313,6 +316,7 @@
 			files = (
 				C07E4714228031DB00671928 /* AllCountriesViewController.swift in Sources */,
 				C0A62EE722804FDE00829E50 /* AutoLayout.swift in Sources */,
+				C0034013228426F600709990 /* AllCountriesTableViewController.swift in Sources */,
 				C003400D2282E34B00709990 /* MapCoordinator.swift in Sources */,
 				C0A62EF02280606C00829E50 /* CountryModel.swift in Sources */,
 				C0A62EF72281803800829E50 /* CountriesProtocol.swift in Sources */,
