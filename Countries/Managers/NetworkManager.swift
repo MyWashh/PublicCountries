@@ -1,12 +1,12 @@
 import UIKit
 
-enum Result<T, E> {
+enum Result<T> {
     case success(T)
     case error
 }
 
 class NetworkManager: CountriesProtocol {
-    private func requestData<T: Decodable>(withURL url: String, onCompleted: @escaping (Result<T, Bool>) -> Void) {
+    private func requestData<T: Decodable>(withURL url: String, onCompleted: @escaping (Result<T>) -> Void) {
         guard let url = URL(string: url) else { return }
         let session = setupSession()
         session.dataTask(with: url) {(data, _, error) in
@@ -17,8 +17,8 @@ class NetworkManager: CountriesProtocol {
             do {
                 let country = try JSONDecoder().decode(T.self, from: data)
                 onCompleted(Result.success(country))
-            } catch let jsonError {
-                print(jsonError)
+            } catch {
+                onCompleted(Result.error)
             }
             }.resume()
     }
@@ -30,14 +30,14 @@ class NetworkManager: CountriesProtocol {
         return session
     }
 
-    func getCountries(onCompleted: @escaping (Result<[Country], Bool>) -> Void) {
+    func getCountries(onCompleted: @escaping (Result<[Country]>) -> Void) {
         let url = "https://restcountries.eu/rest/v2/all?fields=name;alpha3Code"
         requestData(withURL: url) { result in
             onCompleted(result)
         }
     }
 
-    func getCountryDetails(code: String, onCompleted: @escaping (Result<Country, Bool>) -> Void) {
+    func getCountryDetails(code: String, onCompleted: @escaping (Result<Country>) -> Void) {
         let fields = "?fields=name;capital;population;latlng;alpha3Code;area;region;flag"
         let url = "https://restcountries.eu/rest/v2/alpha/" + code + fields
         requestData(withURL: url) { result in

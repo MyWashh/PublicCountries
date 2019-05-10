@@ -6,6 +6,7 @@ class AllCountriesTableViewController: UITableViewController {
     var countries: [Country]?
     var countriesToDisplay: [Country]?
     let countriesService: CountriesProtocol
+    let detailsError = "Couldn't load details"
 
     init(countiresProtocol: CountriesProtocol) {
         self.countriesService = countiresProtocol
@@ -18,7 +19,7 @@ class AllCountriesTableViewController: UITableViewController {
 
     func getCountries() {
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        countriesService.getCountries {result -> Void in
+        countriesService.getCountries {result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let countries):
@@ -76,7 +77,7 @@ class AllCountriesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let code = countriesToDisplay?[indexPath.row].alpha3Code else { return }
-        presentCountryDetails(code: code)
+            presentCountryDetails(code: code)
     }
 
     func presentCountryDetails(code: String) {
@@ -91,7 +92,7 @@ class AllCountriesTableViewController: UITableViewController {
                     self.present(navigationController, animated: true, completion: nil)
                 case .error:
                     MBProgressHUD.hide(for: self.view, animated: true)
-                    AlertController.showAlert(on: self, message: "Couldn't load details")
+                    AlertController.showAlert(on: self, message: self.detailsError)
                 }
             }
         }
