@@ -7,7 +7,6 @@ class CountryDetailsTests: XCTestCase {
 
     func testTableViewDatSourceIsCountryDetailsDataSource() {
         let detailsViewController = CountryDetailsViewController(country: country)
-
         XCTAssertTrue(detailsViewController.detailsTableView.dataSource is CountryDetailsDataSource)
     }
 
@@ -27,5 +26,12 @@ class CountryDetailsTests: XCTestCase {
         tableView.register(CountryDetailsCell.self, forCellReuseIdentifier: "DetailsCell")
         let cell = dataSource.tableView(tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as? CountryDetailsCell
         XCTAssertEqual(cell?.detailValueLabel.text, country.name)
+    }
+
+    func testTableViewDetailsRowsNumber() {
+        let dataSource = CountryDetailsDataSource(country: country)
+        let tableView = UITableView()
+        let numberOfRows = dataSource.tableView(tableView, numberOfRowsInSection: 0)
+        XCTAssertEqual(numberOfRows, dataSource.cellDetails.count)
     }
 }

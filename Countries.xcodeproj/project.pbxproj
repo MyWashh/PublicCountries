@@ -14,6 +14,8 @@
 		C003401122830F6D00709990 /* CountryDetailsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003401022830F6D00709990 /* CountryDetailsDataSource.swift */; };
 		C0034013228426F600709990 /* AllCountriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0034012228426F600709990 /* AllCountriesTableViewController.swift */; };
 		C003401F22844EAD00709990 /* CountryDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C003401E22844EAD00709990 /* CountryDetailsTests.swift */; };
+		C070E4832285808400655A0E /* AllCoutnriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C070E4822285808400655A0E /* AllCoutnriesTests.swift */; };
+		C070E48522858F9100655A0E /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C070E48422858F9100655A0E /* test.swift */; };
 		C07E4712228031DB00671928 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E4711228031DB00671928 /* AppDelegate.swift */; };
 		C07E4714228031DB00671928 /* AllCountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07E4713228031DB00671928 /* AllCountriesViewController.swift */; };
 		C07E471C228031DD00671928 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C07E471B228031DD00671928 /* Assets.xcassets */; };
@@ -48,6 +50,8 @@
 		C003401C22844EAC00709990 /* CountriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountriesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C003401E22844EAD00709990 /* CountryDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryDetailsTests.swift; sourceTree = "<group>"; };
 		C003402022844EAD00709990 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C070E4822285808400655A0E /* AllCoutnriesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCoutnriesTests.swift; sourceTree = "<group>"; };
+		C070E48422858F9100655A0E /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		C07E470E228031DB00671928 /* Countries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Countries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C07E4711228031DB00671928 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C07E4713228031DB00671928 /* AllCountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCountriesViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				C003401E22844EAD00709990 /* CountryDetailsTests.swift */,
+				C070E4822285808400655A0E /* AllCoutnriesTests.swift */,
+				C070E48422858F9100655A0E /* test.swift */,
 				C003402022844EAD00709990 /* Info.plist */,
 			);
 			path = CountriesTests;
@@ -376,6 +382,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C070E4832285808400655A0E /* AllCoutnriesTests.swift in Sources */,
+				C070E48522858F9100655A0E /* test.swift in Sources */,
 				C003401F22844EAD00709990 /* CountryDetailsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,7 +9,7 @@ final class AllCountriesViewController: UIViewController {
 
     init(countriesProtocol: CountriesProtocol) {
         countriesService = countriesProtocol
-        self.tableViewController = AllCountriesTableViewController(searchController: searchController)
+        self.tableViewController = AllCountriesTableViewController()
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -78,13 +78,15 @@ final class AllCountriesViewController: UIViewController {
 // MARK: Table View
 extension AllCountriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isFiltering() {
-            guard let code = tableViewController.filteredCountries?[indexPath.row].alpha3Code else { return }
-            presentCountryDetails(code: code)
-        } else {
-            guard let code = tableViewController.countries?[indexPath.row].alpha3Code else { return }
-            presentCountryDetails(code: code)
-        }
+        searchController.isActive = true
+    //
+//        if isFiltering() {
+//            guard let code = tableViewController.filteredCountries?[indexPath.row].alpha3Code else { return }
+//            presentCountryDetails(code: code)
+//        } else {
+//            guard let code = tableViewController.countries?[indexPath.row].alpha3Code else { return }
+//            presentCountryDetails(code: code)
+//        }
     }
 
     func presentCountryDetails(code: String) {
@@ -124,6 +126,8 @@ extension AllCountriesViewController: UISearchResultsUpdating {
     }
 
     func isFiltering() -> Bool {
-        return searchController.isActive && !searchBarIsEmpty()
+        let isFiltering = searchController.isActive && !searchBarIsEmpty()
+        tableViewController.isFiltering = isFiltering
+        return isFiltering
     }
 }
