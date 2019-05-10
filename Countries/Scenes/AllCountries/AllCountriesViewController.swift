@@ -1,18 +1,16 @@
 import UIKit
 import MBProgressHUD
 
-class AllCountriesViewController: UIViewController {
-    let tableView = UITableView()
+final class AllCountriesViewController: UIViewController {
+    let tableViewController: AllCountriesTableViewController
     let countriesService: CountriesProtocol
     let searchController = UISearchController(searchResultsController: nil)
     let cellIdentifier = "CountryCell"
-    var countries: [Country]?
-    var filteredCountries: [Country]?
 
     init(countriesProtocol: CountriesProtocol) {
         countriesService = countriesProtocol
+        self.tableViewController = AllCountriesTableViewController()
         super.init(nibName: nil, bundle: nil)
-        setupSearchController()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -22,13 +20,49 @@ class AllCountriesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        navigationItem.title = "Countries"
+        setupNavigationBar()
         setupTableView()
-        bindTableView()
+        getCountries()
+    }
+
+    func getCountries() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        countriesService.getCountries {result -> Void in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let countries):
+                    self.tableViewController.countries = countries
+                    self.tableViewController.tableView.reloadData()
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                case .error:
+                    print("ooops something went wrong")
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    AlertController.showAlert(on: self, message: "Couldn't download country list")
+                }
+            }
+        }
+    }
+
+    func setupNavigationBar() {
+        navigationItem.title = "Countries"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshTableView))
+        setupSearchController()
+
+    }
+
+    func setupSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search country"
+        definesPresentationContext = true
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
     }
 
     func setupTableView() {
-        view.addSubview(tableView, constraints: [
+        getCountries()
+        tableViewController.tableView.delegate = self
+        view.addSubview(tableViewController.tableView, constraints: [
             equal(\.leftAnchor),
             equal(\.rightAnchor),
             equal(\.topAnchor, view.safeAreaLayoutGuide.topAnchor),
@@ -36,67 +70,39 @@ class AllCountriesViewController: UIViewController {
         ])
     }
 
-    func setupSearchController() {
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search country"
-        navigationItem.searchController = searchController
-        definesPresentationContext = true
-        navigationItem.hidesSearchBarWhenScrolling = false
+    @objc func refreshTableView() {
+        getCountries()
     }
 }
 
 // MARK: Table View
-extension AllCountriesViewController: UITableViewDelegate, UITableViewDataSource {
-    func bindTableView() {
-        tableView.register(AllCountriesCell.self, forCellReuseIdentifier: cellIdentifier)
-        tableView.delegate = self
-        tableView.dataSource = self
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        countriesService.getAllCountries {country -> Void in
-            self.countries = country
-            DispatchQueue.main.async {
-                tableView.reloadData()
-            }
-        }
-        if isFiltering() {
-            return filteredCountries?.count ?? 0
-        }
-        return countries?.count ?? 0
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? AllCountriesCell ?? AllCountriesCell(style: .default, reuseIdentifier: cellIdentifier)
-        if isFiltering() {
-            cell.countryNameLabel.text = filteredCountries?[indexPath.row].name
-        } else {
-            cell.countryNameLabel.text = countries?[indexPath.row].name
-        }
-        return cell
-    }
-
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
-    }
-
+extension AllCountriesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if isFiltering() {
-            guard let code = filteredCountries?[indexPath.row].alpha3Code else { return }
-            presentCountryDetails(code: code)
-        } else {
-            guard let code = countries?[indexPath.row].alpha3Code else { return }
-            presentCountryDetails(code: code)
-        }
+        searchController.isActive = true
+    //
+//        if isFiltering() {
+//            guard let code = tableViewController.filteredCountries?[indexPath.row].alpha3Code else { return }
+//            presentCountryDetails(code: code)
+//        } else {
+//            guard let code = tableViewController.countries?[indexPath.row].alpha3Code else { return }
+//            presentCountryDetails(code: code)
+//        }
     }
 
     func presentCountryDetails(code: String) {
         MBProgressHUD.showAdded(to: self.view, animated: true)
-        countriesService.getCountryDetails(code: code) { country in
+        countriesService.getCountryDetails(code: code) { result in
             DispatchQueue.main.async {
-                MBProgressHUD.hide(for: self.view, animated: true)
-                self.present(CountryDetailViewController(name: country.name), animated: true, completion: nil)
+                switch result {
+                case .success(let country):
+                    let countryDetailsController = CountryDetailsViewController(country: country)
+                    let navigationController = UINavigationController(rootViewController: countryDetailsController)
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    self.present(navigationController, animated: true, completion: nil)
+                case .error:
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                    AlertController.showAlert(on: self, message: "Couldn't load details")
+                }
             }
         }
     }
@@ -113,13 +119,15 @@ extension AllCountriesViewController: UISearchResultsUpdating {
     }
 
     func filterContentForSearchText(_ searchText: String) {
-        filteredCountries = countries?.filter({(country: Country) -> Bool in
+        tableViewController.filteredCountries = tableViewController.countries?.filter({(country: Country) -> Bool in
             return country.name.lowercased().contains(searchText.lowercased())
         })
-        tableView.reloadData()
+        tableViewController.tableView.reloadData()
     }
 
     func isFiltering() -> Bool {
-        return searchController.isActive && !searchBarIsEmpty()
+        let isFiltering = searchController.isActive && !searchBarIsEmpty()
+        tableViewController.isFiltering = isFiltering
+        return isFiltering
     }
 }

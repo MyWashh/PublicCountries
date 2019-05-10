@@ -1,8 +1,8 @@
 import UIKit
 
-final class AllCountriesCell: UITableViewCell {
-
-    let countryNameLabel = UILabel()
+final class CountryDetailsCell: UITableViewCell {
+    let detailLabel = UILabel()
+    let detailValueLabel = UILabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -14,8 +14,13 @@ final class AllCountriesCell: UITableViewCell {
     }
 
     func setupLayout() {
-        addSubview(countryNameLabel, constraints: [
+        addSubview(detailLabel, constraints: [
             equal(\.leftAnchor, constant: 16),
+            equal(\.centerYAnchor)
+        ])
+
+        addSubview(detailValueLabel, constraints: [
+            equal(\.rightAnchor, rightAnchor, constant: -16),
             equal(\.centerYAnchor)
         ])
     }

@@ -1,6 +1,6 @@
 import UIKit
 
 protocol CountriesProtocol {
-    func getAllCountries(onCompleted: @escaping ([Country]) -> Void)
-    func getCountryDetails(code: String, onCompleted: @escaping (Country) -> Void)
+    func getCountries(onCompleted: @escaping ((Result<[Country], Bool>)) -> Void)
+    func getCountryDetails(code: String, onCompleted: @escaping (Result<Country, Bool>) -> Void)
 }
